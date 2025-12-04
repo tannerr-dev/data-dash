@@ -1,0 +1,7 @@
+/tmp/build-errors.log
+/tmp/*
+*tmp/*
+tmp
+.env
+volume
+.jwt_secret

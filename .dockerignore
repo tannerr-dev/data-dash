@@ -1,0 +1,13 @@
+*/tmp/*
+tmp/
+volume
+.git
+.gitignore
+README.md
+SIMPLE_CHART_README.md
+AUTHENTICATION_SETUP.md
+deploy.sh
+old-data/
+.dockerignore
+Dockerfile
+data/
