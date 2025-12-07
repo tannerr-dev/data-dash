@@ -5,3 +5,5 @@ tmp
 .env
 volume
 .jwt_secret
+public/plot.min.js
+public/d3.min.js
