@@ -42,6 +42,7 @@ async function initializeApp() {
     // Custom calculations display will be updated when first item loads
 }
 
+
 // Populate the dropdown with item keys
 function populateItemDropdown(itemKeys) {
     allItemKeys = [...itemKeys];
@@ -632,7 +633,7 @@ function calculateCustomLineQuantity(intercept, slope, months = 12) {
             formula: 'y = 0 + 0x (Invalid input)' 
         };
     }
-    
+
     if (!isFinite(intercept) || !isFinite(slope)) {
         console.error('Non-finite intercept or slope values:', { intercept, slope });
         return { 
@@ -641,7 +642,7 @@ function calculateCustomLineQuantity(intercept, slope, months = 12) {
             formula: 'y = 0 + 0x (Invalid input)' 
         };
     }
-    
+
     if (months <= 0 || months > 120) { // Cap at 10 years maximum
         console.warn('Invalid months parameter:', months, 'using default of 12');
         months = 12;
@@ -659,13 +660,13 @@ function calculateCustomLineQuantity(intercept, slope, months = 12) {
     // Calculate projected values for the NEXT specified number of months
     for (let i = 1; i <= months; i++) {
         const projectedValue = intercept + (slope * i);
-        
+
         // Validate projected value
         if (!isFinite(projectedValue)) {
             console.warn(`Invalid projected value at month ${i}:`, projectedValue);
             continue;
         }
-        
+
         // Ensure non-negative values and apply upper bound
         const clampedValue = Math.max(0, Math.min(projectedValue, maxProjectedValue));
         totalQuantity += clampedValue;
@@ -750,8 +751,8 @@ function createVisualization(salesData) {
     d3.select('#chart').selectAll('*').remove();
 
     const margin = {top: 20, right: 80, bottom: 60, left: 80};
-    const width = 1000 - margin.left - margin.right;
-    const height = 400 - margin.top - margin.bottom;
+    const width = 1200 - margin.left - margin.right;
+    const height = 600 - margin.top - margin.bottom;
 
     const svg = d3.select('#chart')
         .append('svg')
@@ -861,6 +862,7 @@ function createVisualization(salesData) {
         .style('fill', window.getCSSVariable('--chart-axis-text'));
         // .text('Date');
 }
+
 function drawProjectionLines(g, projections, salesData, xScale, yScale) {
     Object.keys(projections).forEach(key => {
         if (!lineVisibility[key]) return;
@@ -872,17 +874,17 @@ function drawProjectionLines(g, projections, salesData, xScale, yScale) {
         const totalDataPoints = salesData.length;
         const projectionMonths = 12;
         const endIndex = totalDataPoints + projectionMonths;
-        
+
         // Validate startIndex to prevent array access errors
         const safeStartIndex = Math.max(0, Math.min(proj.startIndex, totalDataPoints - 1));
-        
+
         for (let i = safeStartIndex; i < endIndex; i++) {
             const adjustedIndex = i - safeStartIndex;
             const predictedSales = proj.regression.intercept + proj.regression.slope * adjustedIndex;
-            
+
             let date;
             let isProjected;
-            
+
             if (i < totalDataPoints) {
                 // Historical data point
                 date = salesData[i].date;
