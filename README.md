@@ -1,6 +1,25 @@
 # Data Dash
 an application for analyzing sales
 
+
+## google OAuth
+Authorized js origins
+
+prod
+https://data.tannerr.com
+
+dev
+http://localhost:8080
+
+Authorized redirect URIs
+
+prod
+https://data.tannerr.com/api/login
+
+dev
+https://localhost:8080/api/login
+
+
 ## Build & Deploy Commands
 
 Local:

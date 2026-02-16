@@ -93,11 +93,12 @@ func init() {
 	}
 	if os.Getenv("ENV") == "PRODUCTION" {
 		log.Println("PRODUCTION mode")
-		GoogleClientID = "342815594579-ggh0eet7138jdutu0qqkgndg390vqlcj.apps.googleusercontent.com"
+		GoogleClientID =  os.Getenv("GOOGLE_CLIENT_ID_PROD")
+
 		LoginURI = "https://data.tannerr.com/api/login"
 	} else {
 		log.Println("DEVELOPMENT mode")
-		GoogleClientID = "342815594579-hdrs2ntk9k6g4obh9ucclrhnqsi0p19c.apps.googleusercontent.com"
+		GoogleClientID = os.Getenv("GOOGLE_CLIENT_ID_DEV")
 		LoginURI = "http://localhost:8080/api/login"
 	}
 	CompanyDomain = os.Getenv("COMPANY_DOMAIN")
