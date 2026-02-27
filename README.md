@@ -3,20 +3,17 @@ an application for analyzing sales
 
 
 ## google OAuth
+google OAuth
+prod
 Authorized js origins
-
-prod
 https://data.tannerr.com
-
-dev
-http://localhost:8080
-
-Authorized redirect URIs
-
-prod
+authorized redirect URIs
 https://data.tannerr.com/api/login
 
 dev
+authorized js origins
+http://localhost:8080
+authorized redirect URIs
 https://localhost:8080/api/login
 
 
